@@ -65,6 +65,6 @@ Remember to use the right password.
 mvn clean test -Dremote.user=script_user -Dremote.password=RiGhTpAsSwOrDgOeShErE tomcat7:deploy  
   
 ## Travis
-[![Build Status](https://travis-ci.org/Gold-ish/StartCode_CA3_Backend.svg?branch=master)](https://travis-ci.org/Gold-ish/StartCode_CA3_Backend)
+[![Build Status](https://travis-ci.com/NinaLisakowski/sem3ExamPrep1_Backend.svg?branch=master)](https://travis-ci.com/NinaLisakowski/sem3ExamPrep1_Backend)
 
 
