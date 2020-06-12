@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class PersonDTO {
     
-    private long id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -28,12 +28,21 @@ public class PersonDTO {
     }
     
      public PersonDTO(Person person) {
+        this.id = person.getId();
         this.firstName = person.getFirstName();
         this.lastName = person.getLastName();
         this.email = person.getEmail();
         this.phone = person.getPhone();
         this.hobbies = HobbyDTO.convertHobbyListToDTO(person.getHobbies());
         this.address = new AddressDTO(person.getAddress());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

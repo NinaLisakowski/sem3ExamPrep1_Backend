@@ -3,7 +3,6 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,20 +32,22 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
     
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
     private List<Hobby> hobbies = new ArrayList();
     
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne
     private Address address;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String email, String phone) {
+    public Person(String firstName, String lastName, String email, String phone, List<Hobby> hobbies, Address address) {
         this.email = email;
         this.phone = phone;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.hobbies = hobbies;
+        this.address = address;
     }
 
 
@@ -106,21 +107,4 @@ public class Person implements Serializable {
         this.address = address;
     }
 
-    public void addAddressToPerson(Address address) {
-        this.address = address;
-        if (!address.getPersons().contains(this)) {
-            address.getPersons().add(this);
-        }
-    }
-
-    public void addHobbyToPerson(Hobby hobby) {
-        if (!this.hobbies.contains(hobby)) {
-            this.hobbies.add(hobby);
-        }
-        if (!hobby.getPersons().contains(this)) {
-            hobby.getPersons().add(this);
-        }
-    }
-
-   
 }

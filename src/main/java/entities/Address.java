@@ -1,15 +1,11 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,8 +22,6 @@ public class Address implements Serializable {
     private String street;
     private String city;
     private String zip;
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Person> persons = new ArrayList();
 
     public Address() {
     }
@@ -36,7 +30,6 @@ public class Address implements Serializable {
         this.street = street;
         this.city = city;
         this.zip = zip;
-        this.persons = persons;
     }
 
     public Long getId() {
@@ -69,14 +62,6 @@ public class Address implements Serializable {
 
     public void setZip(String zip) {
         this.zip = zip;
-    }
-
-    public List<Person> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
     }
 
 }

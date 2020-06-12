@@ -30,30 +30,20 @@ public class SetupTestUsersPHA {
         Address address1 = new Address("Copenhagenvej", "Copenhagen", "2300");
         Address address2 = new Address("Herningsvej", "Herning", "7429");
         Address address3 = new Address("Glostrupvej", "Glostrup", "2600");
-        List<Hobby> hobbies1 = new ArrayList<>();
-        List<Hobby> hobbies2 = new ArrayList<>();
-        List<Hobby> hobbies3 = new ArrayList<>();
+        List<Hobby> hobbiesL1 = new ArrayList<>();
+        List<Hobby> hobbiesL2 = new ArrayList<>();
+        List<Hobby> hobbiesL3 = new ArrayList<>();
 
-        hobbies1.add(hobby1);
-        hobbies1.add(hobby2);
-        hobbies2.add(hobby3);
-        hobbies2.add(hobby4);
-        hobbies3.add(hobby1);
-        hobbies3.add(hobby4);
+        hobbiesL1.add(hobby1);
+        hobbiesL1.add(hobby2);
+        hobbiesL2.add(hobby3);
+        hobbiesL2.add(hobby4);
+        hobbiesL3.add(hobby1);
+        hobbiesL3.add(hobby4);
 
-        Person person1 = new Person("Khabib", "Nurmagomedov", "LwChamp@gmail.com", "12345678");
-        Person person2 = new Person("Tony", "Ferguson", "PplChamp@gmail.com", "12345678");
-        Person person3 = new Person("Mohamed", "Salah", "Pharaoh@gmail.com", "12345678");
-
-        person1.addHobbyToPerson(hobby1);
-        person2.addHobbyToPerson(hobby1);
-        person3.addHobbyToPerson(hobby2);
-        person1.addHobbyToPerson(hobby2);
-        person3.addHobbyToPerson(hobby4);
-
-        person1.addAddressToPerson(address2);
-        person2.addAddressToPerson(address2);
-        person3.addAddressToPerson(address1);
+        Person person1 = new Person("Khabib", "Nurmagomedov", "LwChamp@gmail.com", "12345678", hobbiesL1, address1);
+        Person person2 = new Person("Tony", "Ferguson", "PplChamp@gmail.com", "12345678", hobbiesL2, address2);
+        Person person3 = new Person("Mohamed", "Salah", "Pharaoh@gmail.com", "12345678", hobbiesL3, address3);
 
         em.getTransaction().begin();
         em.persist(hobby1);

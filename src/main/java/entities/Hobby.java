@@ -3,7 +3,6 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +24,7 @@ public class Hobby implements Serializable {
     private Long id;
     private String name;
     private String description;
-    @ManyToMany(mappedBy = "hobbies", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(mappedBy = "hobbies")
     private List<Person> persons = new ArrayList();
     
 
