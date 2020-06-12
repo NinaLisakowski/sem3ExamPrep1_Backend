@@ -19,9 +19,9 @@ public class SetupDummies {
         EntityManager em = EMF.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
-            em.createNamedQuery("Address.deleteAllRows").executeUpdate();
             em.createNamedQuery("Hobby.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Address.deleteAllRows").executeUpdate();
+            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
 
             em.getTransaction().commit();
         } finally {
@@ -55,10 +55,10 @@ public class SetupDummies {
             hobbiesL2.add(hobby4);
 
             Person person1 = new Person("Khabib", "Nurmagomedov", "LwChamp@gmail.com", "12345678", hobbiesL1, address1);
-            Person person2 = new Person("Tony", "Ferguson", "PplChamp@gmail.com", "12345678", hobbiesL2, address2);
-            Person person3 = new Person("Mohamed", "Salah", "Pharaoh@gmail.com", "12345678", hobbiesL2, address3);
-            Person person4 = new Person("Virgil", "van Dijk", "TopDefender@gmail.com", "12345678", hobbiesL1, address4);
-            Person person5 = new Person("Keanu", "Reeves", "RealNeo@gmail.com", "12345678", hobbiesL2, address5);
+            Person person2 = new Person("Tony", "Ferguson", "PplChamp@gmail.com", "56473829", hobbiesL2, address2);
+            Person person3 = new Person("Mohamed", "Salah", "Pharaoh@gmail.com", "90785634", hobbiesL2, address3);
+            Person person4 = new Person("Virgil", "van Dijk", "TopDefender@gmail.com", "10293847", hobbiesL1, address4);
+            Person person5 = new Person("Keanu", "Reeves", "RealNeo@gmail.com", "91827364", hobbiesL2, address5);
 
             em.persist(hobby1);
             em.persist(hobby2);

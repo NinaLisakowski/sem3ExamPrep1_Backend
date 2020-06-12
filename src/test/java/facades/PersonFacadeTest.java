@@ -130,6 +130,7 @@ public class PersonFacadeTest {
         PersonDTO resultPerson = facade.getPersonByPhone(expectedPhone);
         assertEquals(resultPerson.getPhone(), expectedPhone);
     }
+    
 //    //assertfailure with exception
 //    @Test
 //    public void testgetPersonByIdFail() {

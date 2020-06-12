@@ -42,8 +42,8 @@ public class SetupTestUsersPHA {
         hobbiesL3.add(hobby4);
 
         Person person1 = new Person("Khabib", "Nurmagomedov", "LwChamp@gmail.com", "12345678", hobbiesL1, address1);
-        Person person2 = new Person("Tony", "Ferguson", "PplChamp@gmail.com", "12345678", hobbiesL2, address2);
-        Person person3 = new Person("Mohamed", "Salah", "Pharaoh@gmail.com", "12345678", hobbiesL3, address3);
+        Person person2 = new Person("Tony", "Ferguson", "PplChamp@gmail.com", "98765432", hobbiesL2, address2);
+        Person person3 = new Person("Mohamed", "Salah", "Pharaoh@gmail.com", "76548769", hobbiesL3, address3);
 
         em.getTransaction().begin();
         em.persist(hobby1);
