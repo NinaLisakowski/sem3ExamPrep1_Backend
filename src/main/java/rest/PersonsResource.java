@@ -56,5 +56,12 @@ public class PersonsResource {
     public String getPersonsByHobby(@PathParam("email") String email) throws NotFoundException{
         return GSON.toJson(FACADE.getPersonByEmail(email));
     }
+    
+    @GET
+    @Path("/hobby/{hobby}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllPersonsFromHobby(@PathParam("hobby") String hobby) throws NotFoundException {
+        return GSON.toJson(FACADE.getPersonsFromHobby(hobby));
+    }
 
 }

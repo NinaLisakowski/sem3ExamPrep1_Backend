@@ -48,19 +48,18 @@ public class PersonFacadeTest {
 //            em.close();
 //        }
 //    }
-
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         address1 = new Address("KagsåKollegiet", "Copenhagen", "2300");
         address2 = new Address("Fredensbovej", "Hvidovre", "2650");
         address3 = new Address("Kattevej", "Ballerup", "2750");
-        
+
         hobby1 = new Hobby("Gaming", "Wasting time in front of computer or TV");
         hobby2 = new Hobby("Swimming", "Getting wet");
         hobby3 = new Hobby("Fishing", "Getting up early and doing nothing for 5 hours");
         hobby4 = new Hobby("D&D", "Very nerdy game");
-        
+
         List<Hobby> hobbiesL1 = new ArrayList<>();
         List<Hobby> hobbiesL2 = new ArrayList<>();
         List<Hobby> hobbiesL3 = new ArrayList<>();
@@ -68,9 +67,9 @@ public class PersonFacadeTest {
         hobbiesL1.add(hobby2);
         hobbiesL2.add(hobby1);
         hobbiesL2.add(hobby3);
-        hobbiesL3.add(hobby4);  
+        hobbiesL3.add(hobby4);
         hobbiesL3.add(hobby2);
-        
+
         p1 = new Person("Caroline", "HoegIversen", "carol@hoeg.iversen", "20394857", hobbiesL1, address1);
         p2 = new Person("Tobias", "AnkerB-J", "tobias@anker.boldtJ", "12345678", hobbiesL2, address2);
         p3 = new Person("Allan", "Simonsen", "allan@bo.simonsen", "98786756", hobbiesL3, address3);
@@ -80,16 +79,16 @@ public class PersonFacadeTest {
             em.createNamedQuery("Hobby.deleteAllRows").executeUpdate();
             em.createNamedQuery("Person.deleteAllRows").executeUpdate();
             em.createNamedQuery("Address.deleteAllRows").executeUpdate();
-            
+
             em.persist(hobby1);
             em.persist(hobby2);
             em.persist(hobby3);
             em.persist(hobby4);
-            
+
             em.persist(address1);
             em.persist(address2);
             em.persist(address3);
-            
+
             em.persist(p1);
             em.persist(p2);
             em.persist(p3);
@@ -114,10 +113,10 @@ public class PersonFacadeTest {
         PersonDTO result = facade.getPersonById(expectedID);
         assertEquals(result.getId(), expectedID);
     }
-    
+
     @Test
     public void testGetPersonByEmail() throws NotFoundException {
-        System.out.println("getAllPersonByEmail");
+        System.out.println("getPersonByEmail");
         String expectedEmail = p2.getEmail();
         PersonDTO resultPerson = facade.getPersonByEmail(expectedEmail);
         assertEquals(resultPerson.getEmail(), expectedEmail);
@@ -125,12 +124,19 @@ public class PersonFacadeTest {
 
     @Test
     public void testGetPersonByPhone() throws NotFoundException {
-        System.out.println("getAllPersonByPhone");
+        System.out.println("getPersonByPhone");
         String expectedPhone = p3.getPhone();
         PersonDTO resultPerson = facade.getPersonByPhone(expectedPhone);
         assertEquals(resultPerson.getPhone(), expectedPhone);
     }
-    
+
+    @Test
+    public void testGetPersonsFromHobby() throws NotFoundException {
+        System.out.println("getPersonsFromHobby");
+        List<PersonDTO> persons = facade.getPersonsFromHobby(hobby1.getName());
+        assertEquals(2, persons.size());
+    }
+
 //    //assertfailure with exception
 //    @Test
 //    public void testgetPersonByIdFail() {

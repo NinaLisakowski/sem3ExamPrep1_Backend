@@ -17,7 +17,6 @@ import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.equalTo;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +27,7 @@ import utils.EMF_Creator.Strategy;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class PersonsResourceTest {
+public class HobbyResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
@@ -171,99 +170,19 @@ public class PersonsResourceTest {
         given().when().get("/persons").then().statusCode(200);
     }
 
-//    //GET
-//    @Test
-//    public void testGetAllPersons() {
-//        given()
-//                .contentType("application/json")
-//                .get("/persons/all").then()
-//                .assertThat()
-//                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body( hasSize(3));
-//    }
-
-//    //GET
-//    @Test
-//    public void testPersonsListContains() throws Exception {
-//        given()
-//                .contentType("application/json")
-//                .get("/persons/all").then()
-//                .assertThat()
-//                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body(".firstName", containsInAnyOrder("Khabib", "Tony", "Mohamed"))
-//                .body(".lastName", containsInAnyOrder("Nurmagomedov", "Ferguson", "Salah"));
-//    }
-
-    //GET
-    @Test
-    public void testGetPersonById() {
-        given()
-                .contentType("application/json")
-                .get("/persons/id/" + p3.getId()).then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("firstName", equalTo("Allan"))
-                .body("lastName", equalTo("Simonsen"));
-    }
-
-//    //GET
-//    @Test
-//    public void testGetPersonByIdFail() {
-//        given()
-//                .contentType("application/json")
-//                .get("/persons/" + 0).then()
-//                .assertThat()
-//                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode())
-//                .body("code", equalTo(404))
-//                .body("message", equalTo("No person found with this id"));
-//    }
-
-    //GET
-    @Test
-    public void testGetPersonByPhone() {
-        given()
-                .contentType("application/json")
-                .get("/persons/phone/" + p2.getPhone()).then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("firstName", equalTo("Tobias"))
-                .body("lastName", equalTo("AnkerB-J"));
-    }
-//
-//    //GET
-//    @Test
-//    public void testGetPersonByPhoneFail() {
-//        given()
-//                .contentType("application/json")
-//                .get("/persons/phone/" + 00000000).then()
-//                .assertThat()
-//                .statusCode(HttpStatus.NOT_FOUND_404.getStatusCode())
-//                .body("code", equalTo(404))
-//                .body("message", equalTo("No content found for this request"));
-//    }
-
-    //GET
-    @Test
-    public void testGetPersonByEmail() {
-        given()
-                .contentType("application/json")
-                .get("/persons/email/" + p1.getEmail()).then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("firstName", equalTo("Caroline"))
-                .body("lastName", equalTo("HoegIversen"));
-    }
-    
     
     //GET
-    @Test
-    public void testGetAllPersonsFromHobby() {
+   @Test
+    public void testGetAllHobbies() {
         given()
                 .contentType("application/json")
-                .get("/persons/hobby/" + hobby1.getName()).then()
+                .get("/hobbies/all").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("firstName", containsInAnyOrder("Caroline", "Tobias"))
-                .body("lastName", containsInAnyOrder("HoegIversen", "AnkerB-J"));
+                .body("name", containsInAnyOrder("Swimming", "Fishing", "Gaming", "D&D"))
+                .body("description", containsInAnyOrder("Wasting time in front of computer or TV",
+                        "Getting wet",
+                        "Very nerdy game",
+                        "Getting up early and doing nothing for 5 hours"));
     }
 }

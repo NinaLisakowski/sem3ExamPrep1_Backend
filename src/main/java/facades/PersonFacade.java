@@ -1,6 +1,7 @@
 package facades;
 
 import dto.PersonDTO;
+import entities.Hobby;
 import entities.Person;
 import errorhandling.NotFoundException;
 import java.util.ArrayList;
@@ -93,6 +94,19 @@ public class PersonFacade {
             em.close();
         }
     }
-
-
+    
+    public List<PersonDTO> getPersonsFromHobby(String hobby) throws NotFoundException {
+        EntityManager em = getEntityManager();
+        List<PersonDTO> phDTOList = new ArrayList();
+        try {
+            Hobby q = em.createQuery("SELECT h FROM Hobby h WHERE h.name = :hobby", Hobby.class).setParameter("hobby", hobby).getSingleResult();
+            for (Person p : q.getPersons()) {
+                phDTOList.add(new PersonDTO(p));
+            }
+            return phDTOList;
+        } finally {
+            em.close();
+        }
+    }
+    
 }
